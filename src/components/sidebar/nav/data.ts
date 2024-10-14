@@ -1,8 +1,7 @@
-import { LateralNavItem } from "../../../utils/nav/nav.types";
-import { HomeSVG, ProfileSVG } from "../../icons";
+import { HomeSVG, ProfileSVG } from "../../icons"
+import { NavItemType } from "./nav.types"
 
-
-export const laretalNavItems: LateralNavItem[] = [
+export const laretalNavItems: NavItemType[] = [
     {
         name: "Inicio",
         icon: HomeSVG,
