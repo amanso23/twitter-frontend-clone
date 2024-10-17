@@ -14,7 +14,7 @@ const Main = () => {
                 setSelectedItem={setSelectedItem}
             />
             <TextArea />
-            {selectedItem === "Para ti" ? <Feed /> : <Feed />}
+            {selectedItem === "Para ti" ? <Feed/> : <Feed />}
         </div>
     )
 }

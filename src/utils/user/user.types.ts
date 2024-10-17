@@ -1,3 +1,5 @@
+import { Post } from "../posts/post.types"
+
 
 export interface User {
     gender: string
@@ -13,7 +15,20 @@ export interface User {
     picture: Picture
     nat: string
     isFollowed: boolean
-    
+    sectionName: string
+    isVerified: boolean
+    isAfiliated: boolean
+    description: string
+    social: Social
+}
+
+export interface UserWithPost extends User {
+    posts: Post[]
+}
+
+export interface Social {
+    following: number
+    followers: number
 }
 
 export interface Name {

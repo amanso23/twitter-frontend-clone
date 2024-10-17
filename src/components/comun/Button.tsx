@@ -10,12 +10,10 @@ interface Props {
 }
 
 const Button: React.FC<Props> = ({content, className, onClick, disabled, onMouseEnter, onMouseLeave}) => {
-
-
-    console.log(disabled)
+    
     return (
         <button className={className} onClick={onClick} disabled={disabled} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-            {content }
+            {content}
         </button>
     )
 }

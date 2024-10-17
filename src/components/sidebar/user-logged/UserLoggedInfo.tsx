@@ -1,38 +1,30 @@
-import { useEffect, useState } from "react"
-import { OptionsSVG } from "../../icons"
-import UserLoggedInfoSkeleton from "../../loaders/UserLoggedInfoSkeleton"
-import { loadLoggedUser } from "../../../utils/user/loadLoggedUser"
-import { User } from "../../../utils/user/user.types"
-
+import { OptionsSVG, VerifiedSVG } from "../../icons"
 
 const UserLoggedInfo = () => {
 
-    const [loggedUser, setLoggedUser] = useState<User>()
 
-    useEffect(() => {
-        loadLoggedUser(setLoggedUser)
-    }, [])
 
     return (
         <div>
-            {loggedUser ? (
-                <section className="flex items-center justify-center xl:justify-between transition-colors rounded-full duration-200 hover:bg-[#181818] mb-4 mr-2 xl:p-3 cursor-pointer">
-                    <aside className="flex items-center gap-x-2">
-                        <picture>
-                            <img
-                                src={loggedUser?.picture.thumbnail}
-                                alt={loggedUser?.name.first}
-                                className="size-12 rounded-full"
-                            />
-                        </picture>
-                        <div className="flex-col text-left hidden xl:flex ">
-                            <p className="ml-1">{loggedUser?.name.first} {loggedUser?.name.last}</p>
-                            <p className="opacity-60">@{loggedUser?.login.username}</p>
+            <section className="flex items-center justify-center xl:justify-between transition-colors rounded-full duration-200 hover:bg-[#181818] mb-4 mr-2 xl:p-3 cursor-pointer">
+                <aside className="flex items-center gap-x-2">
+                    <picture>
+                        <img
+                            src="https://cdn.urbantecno.com/urbantecno/s/2023-01-05-11-27-elon-musk.png?s=200"
+                            alt="mask-picture"
+                            className="size-12 rounded-full"
+                        />
+                    </picture>
+                    <div className="flex-col text-left hidden xl:flex ">
+                        <div className="flex items-center gap-x-1">
+                            <p className=" font-bold ">Elon Musk</p>
+                            <VerifiedSVG className="fill-[#1d9bf0] size-5 mt-[2px]" />
                         </div>
-                    </aside>
-                    <OptionsSVG className="size-4 xl:size-5 hidden xl:flex " />
-                </section>
-            ) : <UserLoggedInfoSkeleton />}
+                        <p className="opacity-60">@elonmusk</p>
+                    </div>
+                </aside>
+                <OptionsSVG className="size-4 xl:size-5 hidden xl:flex " />
+            </section>
         </div>
 
     )

@@ -1,22 +1,20 @@
 import { getRandomDescription } from "./getRandomDescription"
 import { getRandomIsVerified } from "./getRandomIsVerified"
 import { getRandomNumber } from "../getRandomNumber"
-import { UserWithPost } from "./user.types"
-import { getRandomPosts } from "../posts/getRandomPosts"
-import { getRandomUserPost } from "../posts/getRandomUserPost"
+import { User } from "./user.types"
+
 import { users } from "./data"
 
 const MAX_FOLLOWERS = 10000
 const MAX_FOLLOWING = 1000
-const MAX_POST_USER = 10
 
-export const getRandomUser = () => {
+export const getRandomUserWithoutPost = () => {
 
         const result = users[getRandomNumber(users.length)]
 
         const isVerified = getRandomIsVerified()
 
-        const user: UserWithPost = {
+        const user: User = {
             gender: result.gender || "unknown",
             name: result.name || { title: "", first: "", last: "" },
             location: result.location || { street: "", city: "", state: "", country: "", postcode: "" },
@@ -38,13 +36,11 @@ export const getRandomUser = () => {
                 following: getRandomNumber(MAX_FOLLOWING),
                 followers: getRandomNumber(MAX_FOLLOWERS) 
             },
-            posts: getRandomPosts(getRandomNumber(MAX_POST_USER), getRandomUserPost)
-
         }
 
         console.log(user);
         
- 
+
         return user
     
 }

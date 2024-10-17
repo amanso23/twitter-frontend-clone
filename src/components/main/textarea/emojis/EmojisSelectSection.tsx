@@ -11,7 +11,7 @@ const EmojisSelectSection: React.FC<Props> = ({ setInputTextAreaValue }) => {
 
     return (
 
-        <ul className="md:flex items-center mb-4 whitespace-nowrap hidden">
+        <ul className="md:flex items-center whitespace-nowrap hidden">
             {emojis.map((emoji, index) => (
                 <li key={index} className="text-xl p-1 cursor-pointer" onClick={(e) => {
                     const target = e.currentTarget
