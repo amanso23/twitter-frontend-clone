@@ -23,9 +23,8 @@ const UsersSection: React.FC<Props> = ({sectionName, withBorder = true, withMarg
         }
 
         const timer = setTimeout(() => {
-            if (sectionName) {
-                loadUsersSection(setUsersSection, sectionName)
-            }
+            loadUsersSection(setUsersSection, sectionName)
+            
         }, 100)
 
         setDebounceTimer(timer)

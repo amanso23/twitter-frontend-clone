@@ -8,7 +8,7 @@ const Home = () => {
     return(
         <>
             <Main />
-            <RightSideBar children={<PublicityCartel /> } sectionName="A quién seguir" />
+            <RightSideBar children={<PublicityCartel />} sectionName="A quién seguir" />
             
         </>
     )

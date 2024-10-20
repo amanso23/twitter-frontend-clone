@@ -1,7 +1,6 @@
 import { Post } from "../../../utils/posts/post.types";
 import { User } from "../../../utils/user/user.types";
 import SpinLoader from "../../loaders/SpinLoader";
-import UsersSection from "../../right-sidebar/users-section/UsersSection";
 import ProfilePostCard from "./ProfilePostCard";
 
 interface Props {
@@ -17,7 +16,6 @@ const ProfileFeed: React.FC<Props> = ({ posts, user }) => {
         <h1 className="text-4xl mt-20 font-bold ">Esta cuenta no existe</h1>
         <p className="self-start text-[#6a6f74]">Intenta hacer otra búsqueda.</p>
       </div>
-      
     </div>
   }
 
@@ -40,7 +38,7 @@ const ProfileFeed: React.FC<Props> = ({ posts, user }) => {
           ))}
         </ul>
       ) : (
-        <UsersSection sectionName="Tal vez te guste" withBorder={false} withMargin={false} />
+        ""
       )}
     </div>
   )

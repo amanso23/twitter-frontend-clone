@@ -3,8 +3,8 @@ import About from "./about/About";
 import UsersSection from "./users-section/UsersSection";
 
 interface Props {
-    children?: ReactNode
     sectionName: string
+    children?: ReactNode
 }
 
 const RightSideBar: React.FC<Props> = ({children, sectionName}) => {
@@ -15,7 +15,7 @@ const RightSideBar: React.FC<Props> = ({children, sectionName}) => {
                     {children}
                 </section>
                 <section aria-label="Suggested Users">
-                    <UsersSection sectionName={sectionName} />
+                    <UsersSection sectionName={sectionName}  />
                 </section>
                 
                 <section aria-label="About Section" className="mt-[-32px] m-6">
