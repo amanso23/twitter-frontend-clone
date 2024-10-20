@@ -5,10 +5,16 @@ import { User } from "../../../utils/user/user.types"
 import { loadUsersSection } from "../../../utils/user/loadUsersSection"
 
 
-const UsersSection = ({sectionName}:{sectionName: string}) => {
+interface Props {
+    sectionName: string
+    withBorder?: boolean
+    withMargin?: boolean
+}
+
+const UsersSection: React.FC<Props> = ({sectionName, withBorder = true, withMargin = true}) => {
 
     const [usersSection, setUsersSection] = useState<User[] | null >(null) //estado que almacena los usurios
-    const [debounceTimer, setDebounceTimer] = useState<ReturnType<typeof setTimeout> | null>(null); // Estado para almacenar el temporizador
+    const [debounceTimer, setDebounceTimer] = useState<ReturnType<typeof setTimeout> | null>(null) // Estado para almacenar el temporizador
   
     useEffect(() => {
         
@@ -19,9 +25,8 @@ const UsersSection = ({sectionName}:{sectionName: string}) => {
         const timer = setTimeout(() => {
             if (sectionName) {
                 loadUsersSection(setUsersSection, sectionName)
-
             }
-        }, 500)
+        }, 100)
 
         setDebounceTimer(timer)
 
@@ -34,9 +39,8 @@ const UsersSection = ({sectionName}:{sectionName: string}) => {
     return (
         <div>
             {usersSection ? (
-                <section className="flex flex-col rounded-2xl border-[0.5px] border-[#2f3336] gap-y-2 m-6">
+                <section className={`${withMargin && "m-6"}  ${withBorder && "border-[0.5px] border-[#2f3336]"} flex flex-col rounded-2xl gap-y-2`}>
                 <h1 className="font-bold text-2xl text-left ml-5 mt-2">{sectionName}</h1>
-
             
                     <aside className="flex flex-col items-start">
                         {usersSection?.length > 0 ? usersSection.map((user, index) => (
@@ -50,7 +54,7 @@ const UsersSection = ({sectionName}:{sectionName: string}) => {
                         </a> 
                     }
             </section>
-            ): <section className="flex justify-center items-center min-h-[296px] border-[0.5px] border-[#2f3336] gap-y-4 m-4 rounded-2xl">
+            ): <section className={`flex justify-center items-center min-h-[296px] ${withMargin && "m-6"} ${withBorder && "border-[0.5px] border-[#2f3336]"} gap-y-4 m-4 rounded-2xl`}>
                 <SpinLoader />
                 </section>}
         </div>

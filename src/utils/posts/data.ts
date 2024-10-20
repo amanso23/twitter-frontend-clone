@@ -54,7 +54,6 @@ export const postImages = [
     "https://images.pexels.com/photos/28217302/pexels-photo-28217302/free-photo-of-animal-pelo-piel-zoo.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/28523492/pexels-photo-28523492/free-photo-of-la-mansion-del-fundador-en-arequipa-peru.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/28905887/pexels-photo-28905887/free-photo-of-venecia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/28905887/pexels-photo-28905887/free-photo-of-venecia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/28753970/pexels-photo-28753970/free-photo-of-espectacular-puesta-de-sol-sobre-el-lago-fort-william-reino-unido.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/19228242/pexels-photo-19228242/free-photo-of-mujer-parque-transparente-en-pie.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/28425084/pexels-photo-28425084/free-photo-of-silueta-de-una-persona-con-bicicleta-bajo-el-cielo-estrellado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -68,6 +67,20 @@ export const postImages = [
     "https://images.pexels.com/photos/16465970/pexels-photo-16465970/free-photo-of-una-mujer-posando-en-un-vasto-campo-de-flores-amarillas.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/20543294/pexels-photo-20543294/free-photo-of-gafas-de-sol-mujer-modelo-maqueta.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/27439088/pexels-photo-27439088/free-photo-of-hotel-edificio-construccion-tipografia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-
+    "https://images.pexels.com/photos/1546171/pexels-photo-1546171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/2076261/pexels-photo-2076261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/2257899/pexels-photo-2257899.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/2272965/pexels-photo-2272965.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/2261474/pexels-photo-2261474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/4140306/pexels-photo-4140306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/2023220/pexels-photo-2023220.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/3184459/pexels-photo-3184459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/3261750/pexels-photo-3261750.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/4311753/pexels-photo-4311753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/3064235/pexels-photo-3064235.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/2736787/pexels-photo-2736787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/1784236/pexels-photo-1784236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.pexels.com/photos/4040916/pexels-photo-4040916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 ]
+
 

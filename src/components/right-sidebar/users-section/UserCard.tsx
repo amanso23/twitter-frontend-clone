@@ -3,6 +3,7 @@ import { User } from "../../../utils/user/user.types"
 import Button from "../../comun/Button"
 import { updateUsersSection } from "../../../utils/user/updateUsersSection"
 import { VerifiedSVG } from "../../icons"
+import { Link } from "react-router-dom"
 
 interface Props {
     user: User
@@ -17,8 +18,8 @@ const UserCard: React.FC<Props> = ({ user, sectionName }) => {
 
     return (
         <div className="flex items-center justify-between w-full py-3 cursor-pointer transitions-colors duration-300 hover:bg-[#080808] p-4">
-            <a
-                href={`/${user.name.first}${user.name.last}`}
+            <Link
+                to={`/${user.name.first}${user.name.last}`}
                 className="flex items-center gap-x-2 flex-grow min-w-0"
             >
                 <picture>
@@ -44,7 +45,7 @@ const UserCard: React.FC<Props> = ({ user, sectionName }) => {
                     </div>
                     <p className="text-[#66676e] truncate">@{user?.login.username}</p>
                 </div>
-            </a>
+            </Link>
             <Button
                 content={isFollowed ? (isHovered ? 'Dejar de seguir' : 'Siguiendo') : 'Seguir'}
                 className={`${isFollowed
@@ -59,7 +60,6 @@ const UserCard: React.FC<Props> = ({ user, sectionName }) => {
                 onMouseLeave={() => setIsHovered(false)}
             />
         </div>
-
     )
 }
 

@@ -9,9 +9,9 @@ const Feed = () => {
 
     const [posts, setPosts] = useState<FeedPost[]>([])
 
-      useEffect(() => {
-         loadPostsInLocalStorage(setPosts)
-      }, [])
+    useEffect(() => {
+        loadPostsInLocalStorage(setPosts)
+    }, [])
 
     return (
         <div className="flex flex-col border-t-[0.5px] b border-[#2f3336]">

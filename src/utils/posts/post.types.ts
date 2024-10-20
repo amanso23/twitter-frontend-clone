@@ -22,4 +22,5 @@ export interface Comment {
     text: string
     likes: number
     replies: number
+    impressions: number
 }

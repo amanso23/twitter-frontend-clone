@@ -8,7 +8,7 @@ interface Props {
     name?: string
     isVerified?: boolean
     isAfiliated?: boolean
-    cantityOfPost?: number
+    cantityOfPost?: number | string
 }
 
 const Header: React.FC<Props> = ({icon, name, isVerified, isAfiliated, cantityOfPost}) => {
@@ -24,7 +24,7 @@ const Header: React.FC<Props> = ({icon, name, isVerified, isAfiliated, cantityOf
                         {isVerified ? <VerifiedSVG className={`${isAfiliated ? "fill-[#e2b719]" : "fill-[#1d9bf0]"} size-5 mt-[2px]`} /> : ""}
 
                     </div>
-                    <p className="text-[#71767b]">{getParsedNumber(cantityOfPost as number)} post</p>
+                    <p className="text-[#71767b]">{cantityOfPost ? getParsedNumber(cantityOfPost as number) + " post" : ""}</p>
                 </div>) : <p className="text-xl font-bold">Perfil</p> }
             </div>
         </header>

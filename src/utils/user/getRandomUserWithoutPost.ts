@@ -3,14 +3,21 @@ import { getRandomIsVerified } from "./getRandomIsVerified"
 import { getRandomNumber } from "../getRandomNumber"
 import { User } from "./user.types"
 
-import { users } from "./data"
-
 const MAX_FOLLOWERS = 10000
 const MAX_FOLLOWING = 1000
 
-export const getRandomUserWithoutPost = () => {
+export const getRandomUserWithoutPost = async() => {
 
-        const result = users[getRandomNumber(users.length)]
+    try{
+        const response = await fetch("https://randomuser.me/api/")
+
+        if(!response.ok){
+            throw new Error(`${response.statusText}, error en la solicitud`)
+        }
+
+        const data = await response.json()
+
+        const result = data.results[0]
 
         const isVerified = getRandomIsVerified()
 
@@ -36,11 +43,13 @@ export const getRandomUserWithoutPost = () => {
                 following: getRandomNumber(MAX_FOLLOWING),
                 followers: getRandomNumber(MAX_FOLLOWERS) 
             },
+
         }
-
-        console.log(user);
         
-
         return user
-    
+
+    }catch(error){
+        console.error(error)
+        throw error
+    }
 }

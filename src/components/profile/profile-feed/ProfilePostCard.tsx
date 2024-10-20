@@ -13,14 +13,17 @@ interface Props {
 
 const ProfilePostCard: React.FC<Props> = ({post, user}) => {
 
+    const name = `${user.name.first}${user.name.last}`
+    const { username } = user.login
+
     const [isLiked, setIsLiked] = useState(false)
 
     const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
-        const currentTarget = e.currentTarget;
+        const currentTarget = e.currentTarget
 
-        const { left, top, width, height } = currentTarget.getBoundingClientRect();
+        const { left, top, width, height } = currentTarget.getBoundingClientRect()
 
-        setIsLiked(!isLiked);
+        setIsLiked(!isLiked)
 
         if (!isLiked) {
             confetti({
@@ -32,24 +35,24 @@ const ProfilePostCard: React.FC<Props> = ({post, user}) => {
                     y: (top + height / 2) / window.innerHeight 
                 },
                 gravity: 2,
-            });
+            })
         }
-    };
+    }
 
     return (
-        <div className="border-t-[0.5px] border-[#2f3336]">
+        <a href={`/${name}/status/${post.id}`} className="border-t-[0.5px] border-[#2f3336]">
             <div className="grid grid-cols-[60px,1fr] m-4">
                 <div className="flex justify-end mr-3">
                     <img 
                         src={user.picture.large}
-                        alt={`user-${user.name.first}`}
+                        alt={`user-${name}`}
                         className="size-12 rounded-full"
                     />
                 </div>
                 <div className="flex flex-col">
                     <div className="flex items-center gap-x-1">
                         <p className="font-bold truncate">
-                            {user.name.first} {user.name.last}
+                            {name}
                         </p>
                         {user.isVerified ? (
                             <VerifiedSVG
@@ -59,7 +62,7 @@ const ProfilePostCard: React.FC<Props> = ({post, user}) => {
                         ) : (
                             ''
                         )}
-                        <p className="text-[#71767b]">@{user.login.username}</p>
+                        <p className="text-[#71767b]">@{username}</p>
                     </div>
 
                     <div className="flex flex-col">
@@ -97,7 +100,7 @@ const ProfilePostCard: React.FC<Props> = ({post, user}) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     )
 }
 

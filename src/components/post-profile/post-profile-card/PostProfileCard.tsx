@@ -1,22 +1,22 @@
 import { useState } from "react"
-import { FeedPost } from "../../../../utils/posts/post.types"
-import { getParsedNumber } from "../../../../utils/user/getParsedFollowingOrFollowers"
-import { VerifiedSVG, CommentSVG, RetuitSVG, LikeSVG, ImpressionsSVG, BookMarkSVG, ShareSVG } from "../../../icons"
+
 import confetti from 'canvas-confetti'
-import { Link } from "react-router-dom"
+import { getParsedNumber } from "../../../utils/user/getParsedFollowingOrFollowers"
+import { FeedPost } from "../../../utils/posts/post.types"
+import { CommentSVG, RetuitSVG, LikeSVG, ImpressionsSVG, BookMarkSVG, ShareSVG } from "../../icons"
+import UserCard from "./user-card/UserCard"
+import PostComments from "./post-comments/PostComments"
 
 interface Props {
     post: FeedPost
 }
 
-const PostCard: React.FC<Props> = ({ post }) => {
+const PostProfileCard: React.FC<Props> = ({ post }) => {
 
     const { user }  = post //obtenemos el usuario
-    const { username } = user.login // obtenemos el valor del login del usuario
-    const name = `${user.name.first}${user.name.last}` //nombre completo del usuario
+    const { comments } = post
 
     const [isLiked, setIsLiked] = useState(false)
-
 
     const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         const currentTarget = e.currentTarget
@@ -39,34 +39,14 @@ const PostCard: React.FC<Props> = ({ post }) => {
         }
     }
     return (
-        <div className="border-t-[0.5px] border-[#2f3336]">
-            <div className="grid grid-cols-[60px,1fr] m-4">
-                <a href={`/${name}`} className="flex justify-end mr-3">
-                    <img
-                        src={post.user.picture.large}
-                        alt={`post-${post.id}`}
-                        className="size-12 rounded-full"
-                    />
-                </a>
-
+        <div>
+            <div className="grid grid-cols-[1fr] ">
+            
                 <div className="flex flex-col">
-                    <a href={`/${name}`} className="flex items-center gap-x-1">
-                        <p className="font-bold hover:underline truncate">
-                            {name}
-                        </p>
-                        {post.user?.isVerified ? (
-                            <VerifiedSVG
-                                className={`${post.user.isAfiliated ? 'fill-[#e2b719]' : 'fill-[#1d9bf0]'
-                                    } size-5 mt-[2px]`}
-                            />
-                        ) : (
-                            ''
-                        )}
-                        <p className="text-[#71767b]">@{username}</p>
-                    </a>
 
-                    <Link to={`/${name}/status/${post.id}`} >
-                        <div className="flex flex-col">
+                    <UserCard user={user} />
+
+                        <div className="flex flex-col m-4 border-[#2f3336]">
                             <p className="mb-4 text-left" >{post.text}</p>
                             <img
                                 src={post.image}
@@ -75,8 +55,8 @@ const PostCard: React.FC<Props> = ({ post }) => {
                             />
                         </div>
 
-                        <div className="flex justify-between items-center mt-4 gap-x-12 xl:gap-x-16">
-                            <div className="flex items-center justify-between  flex-1">
+                        <div className="flex justify-between items-center gap-x-12 xl:gap-x-16 border-[#2f3336]  border-b-[0.5px]">
+                            <div className="flex items-center justify-between flex-1 ml-4 mb-4 mt-2">
                                 <span className="flex items-center gap-x-1">
                                     <CommentSVG className="fill-[#71767b] size-[22px]" />
                                     <p className="text-[#71767b]">{getParsedNumber(post.comments.length)}</p>
@@ -94,17 +74,18 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                     <p className="text-[#71767b]">{getParsedNumber(post.impressions)}</p>
                                 </span>
                             </div>
-                            <div className="flex items-center justify-between gap-x-3">
+                            <div className="flex items-center justify-between gap-x-3 mr-4">
                                 <BookMarkSVG className="size-[22px] fill-[#71767b]" />
                                 <ShareSVG className="size-[22px] fill-[#71767b]" />
                             </div>
                         </div>
-                    </Link>
                 </div>
+                <PostComments comments={comments} />
             </div>
+
         </div>
 
     )
 }
 
-export default PostCard
+export default PostProfileCard
