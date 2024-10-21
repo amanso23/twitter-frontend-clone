@@ -35,7 +35,7 @@ export const getRandomUserWithoutPost = async() => {
             picture: result.picture || { large: "", medium: "", thumbnail: "" },
             nat: result.nat || "unknown",
             isFollowed: false,
-            sectionName: "A quién seguir",
+            sectionName: "feedPosts",
             isVerified: isVerified,
             isAfiliated: isVerified ? getRandomIsVerified() : false,
             description: getRandomDescription(),

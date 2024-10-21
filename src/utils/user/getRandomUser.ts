@@ -48,10 +48,7 @@ export const getRandomUser = async() => {
                 },
                 posts: await getRandomPosts(getRandomNumber(MAX_POST_USER), getRandomUserPost)
             }
-
-            console.log(user.posts)
             
-
             return user
 
         }catch(error){

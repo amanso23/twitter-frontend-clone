@@ -1,4 +1,5 @@
 import UserProfile from "../components/profile/UserProfile"
+import RightSideBar from "../components/right-sidebar/RightSideBar"
 import TrendingSection from "../components/right-sidebar/trending-section/TrendingSection"
 
 const Profile = () => {
@@ -6,7 +7,7 @@ const Profile = () => {
     return (
         <>
             <UserProfile />
-            <TrendingSection />
+            <RightSideBar children={<TrendingSection />} />
         </>
     )
 }

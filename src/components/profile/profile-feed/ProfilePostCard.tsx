@@ -1,10 +1,11 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Post } from "../../../utils/posts/post.types"
 import { getParsedNumber } from "../../../utils/user/getParsedFollowingOrFollowers"
 import { User } from "../../../utils/user/user.types"
 import { BookMarkSVG, CommentSVG, ImpressionsSVG, LikeSVG, RetuitSVG, ShareSVG, VerifiedSVG } from "../../icons"
 import confetti from 'canvas-confetti'
+import { updateIsLikedAndLikeCount } from "../../../utils/posts/updateIsLikedAndLikeCount"
 
 interface Props {
     post: Post
@@ -16,7 +17,7 @@ const ProfilePostCard: React.FC<Props> = ({post, user}) => {
     const name = `${user.name.first}${user.name.last}`
     const { username } = user.login
 
-    const [isLiked, setIsLiked] = useState(false)
+    const [isLiked, setIsLiked] = useState(post.isLiked)
 
     const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         const currentTarget = e.currentTarget
@@ -37,10 +38,21 @@ const ProfilePostCard: React.FC<Props> = ({post, user}) => {
                 gravity: 2,
             })
         }
+
+        if(!isLiked){
+            post.likes += 1
+        }else{
+            post.likes -= 1
+        }
     }
 
+    useEffect(() => {
+        updateIsLikedAndLikeCount(user.sectionName, post.id, post.likes, isLiked)
+    }, [isLiked])
+
+    
     return (
-        <a href={`/${name}/status/${post.id}`} className="border-t-[0.5px] border-[#2f3336]">
+        <div className="border-t-[0.5px] border-[#2f3336]">
             <div className="grid grid-cols-[60px,1fr] m-4">
                 <div className="flex justify-end mr-3">
                     <img 
@@ -65,14 +77,14 @@ const ProfilePostCard: React.FC<Props> = ({post, user}) => {
                         <p className="text-[#71767b]">@{username}</p>
                     </div>
 
-                    <div className="flex flex-col">
+                    <a href={`/${name}/status/${post.id}`} className="flex flex-col">
                         <p className="mb-4 text-left" >{post.text}</p>
                         <img 
                             src={post.image} 
                             alt={`post ${post.id}`} 
                             className="rounded-2xl border-[0.5px] border-[#2f3336] aspect-square "
                         />
-                    </div>
+                    </a>
 
                     <div className="flex justify-between items-center mt-4 gap-x-12 xl:gap-x-16">
                         <div className="flex items-center justify-between  flex-1">
@@ -100,7 +112,7 @@ const ProfilePostCard: React.FC<Props> = ({post, user}) => {
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
     )
 }
 

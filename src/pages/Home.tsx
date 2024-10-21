@@ -9,7 +9,6 @@ const Home = () => {
         <>
             <Main />
             <RightSideBar children={<PublicityCartel />} sectionName="A quién seguir" />
-            
         </>
     )
 }

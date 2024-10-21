@@ -20,8 +20,7 @@ const UserProfile = () => {
     
     useEffect(() => {
         const usersWithPosts = getUsersWithPostsFromLocalStorage();
-        const usersToFollow = getUsersFromLocalStorage("A quién seguir");
-        const maybeYouLike = getUsersFromLocalStorage("Tal vez te guste");
+        const usersToFollow = getUsersFromLocalStorage("A quién seguir")
 
         // Asegúrate de que usersWithPosts sea un array
         const userWithPost = usersWithPosts.find(userPost =>
@@ -45,16 +44,8 @@ const UserProfile = () => {
             return;
         }
 
-        const userFromMaybeYouLike = maybeYouLike.find(user =>
-            `${user.name.first}${user.name.last}` === name
-        );
-
-        if (userFromMaybeYouLike) {
-            console.log("Usuario encontrado en maybeYouLike:", userFromMaybeYouLike);
-            setFoundUser({ ...userFromMaybeYouLike, sectionName: "Tal vez te guste" });
-            return;
-
-    }}, [name])
+    
+    }, [name])
 
 
     useEffect(() => {

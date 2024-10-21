@@ -2,6 +2,7 @@ import { useState } from "react"
 import HeaderNav from "./header/HeaderNav"
 import TextArea from "./textarea/TextArea"
 import Feed from "./feed/Feed"
+import SpaceXFeed from "./feed/SpaceXFeed"
 
 const Main = () => {
 
@@ -14,7 +15,7 @@ const Main = () => {
                 setSelectedItem={setSelectedItem}
             />
             <TextArea />
-            {selectedItem === "Para ti" ? <Feed/> : <Feed />}
+            {selectedItem === "Para ti" ? <Feed /> : <SpaceXFeed />}
         </div>
     )
 }

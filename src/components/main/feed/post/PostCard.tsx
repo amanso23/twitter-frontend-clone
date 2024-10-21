@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { FeedPost } from "../../../../utils/posts/post.types"
 import { getParsedNumber } from "../../../../utils/user/getParsedFollowingOrFollowers"
 import { VerifiedSVG, CommentSVG, RetuitSVG, LikeSVG, ImpressionsSVG, BookMarkSVG, ShareSVG } from "../../../icons"
 import confetti from 'canvas-confetti'
 import { Link } from "react-router-dom"
+import { updateIsLikedAndLikeCount } from "../../../../utils/posts/updateIsLikedAndLikeCount"
 
 interface Props {
     post: FeedPost
@@ -15,8 +16,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
     const { username } = user.login // obtenemos el valor del login del usuario
     const name = `${user.name.first}${user.name.last}` //nombre completo del usuario
 
-    const [isLiked, setIsLiked] = useState(false)
-
+    const [isLiked, setIsLiked] = useState(post.isLiked)
 
     const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         const currentTarget = e.currentTarget
@@ -37,13 +37,25 @@ const PostCard: React.FC<Props> = ({ post }) => {
                 gravity: 2,
             })
         }
+
+        if (!isLiked) {
+            post.likes += 1
+        } else {
+            post.likes -= 1
+        }
     }
+
+    useEffect(() => {
+        updateIsLikedAndLikeCount(post.user.sectionName, post.id, post.likes, isLiked)
+    }, [isLiked])
+
+
     return (
         <div className="border-t-[0.5px] border-[#2f3336]">
             <div className="grid grid-cols-[60px,1fr] m-4">
                 <a href={`/${name}`} className="flex justify-end mr-3">
                     <img
-                        src={post.user.picture.large}
+                        src={user.picture.large}
                         alt={`post-${post.id}`}
                         className="size-12 rounded-full"
                     />
@@ -56,7 +68,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                         </p>
                         {post.user?.isVerified ? (
                             <VerifiedSVG
-                                className={`${post.user.isAfiliated ? 'fill-[#e2b719]' : 'fill-[#1d9bf0]'
+                                className={`${user.isAfiliated ? 'fill-[#e2b719]' : 'fill-[#1d9bf0]'
                                     } size-5 mt-[2px]`}
                             />
                         ) : (
@@ -74,6 +86,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                 className="rounded-2xl border-[0.5px] border-[#2f3336] aspect-square "
                             />
                         </div>
+                    </Link>
 
                         <div className="flex justify-between items-center mt-4 gap-x-12 xl:gap-x-16">
                             <div className="flex items-center justify-between  flex-1">
@@ -99,7 +112,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
                                 <ShareSVG className="size-[22px] fill-[#71767b]" />
                             </div>
                         </div>
-                    </Link>
+                  
                 </div>
             </div>
         </div>

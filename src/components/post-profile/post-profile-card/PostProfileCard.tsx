@@ -1,11 +1,11 @@
-import { useState } from "react"
-
+import { useEffect, useState } from "react"
 import confetti from 'canvas-confetti'
 import { getParsedNumber } from "../../../utils/user/getParsedFollowingOrFollowers"
 import { FeedPost } from "../../../utils/posts/post.types"
 import { CommentSVG, RetuitSVG, LikeSVG, ImpressionsSVG, BookMarkSVG, ShareSVG } from "../../icons"
 import UserCard from "./user-card/UserCard"
 import PostComments from "./post-comments/PostComments"
+import { updateIsLikedAndLikeCount } from "../../../utils/posts/updateIsLikedAndLikeCount"
 
 interface Props {
     post: FeedPost
@@ -16,7 +16,7 @@ const PostProfileCard: React.FC<Props> = ({ post }) => {
     const { user }  = post //obtenemos el usuario
     const { comments } = post
 
-    const [isLiked, setIsLiked] = useState(false)
+    const [isLiked, setIsLiked] = useState(post.isLiked)
 
     const handleClick = (e: React.MouseEvent<HTMLSpanElement>) => {
         const currentTarget = e.currentTarget
@@ -37,7 +37,18 @@ const PostProfileCard: React.FC<Props> = ({ post }) => {
                 gravity: 2,
             })
         }
+
+        if(!isLiked){
+            post.likes += 1
+        }else{
+            post.likes -= 1
+        }
     }
+
+    useEffect(() => {
+        updateIsLikedAndLikeCount(user.sectionName , post.id, post.likes, isLiked)
+    }, [isLiked])
+
     return (
         <div>
             <div className="grid grid-cols-[1fr] ">

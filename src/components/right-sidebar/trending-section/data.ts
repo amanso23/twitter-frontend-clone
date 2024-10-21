@@ -21,6 +21,6 @@ export const trendings: Trending[] = [
         title: "Where the Crawdads Sing",
         numberOfPublications: 14500
     },
-   
+    
 ]
 

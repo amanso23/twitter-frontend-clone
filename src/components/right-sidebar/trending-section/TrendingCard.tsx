@@ -10,7 +10,7 @@ interface Props {
 
 const TrendingCard: React.FC<Props> = ({trending, index}) => {
     return (
-        <a href="#" className="flex justify-between cursor-pointer transition-colors duration-400 hover:bg-[#131313] p-3">
+        <a href="#" className="flex justify-between cursor-pointer transition-colors duration-400 hover:bg-[#131313] p-3 overflow-hidden">
             <div className="flex flex-col items-start">
                 <div className="flex items-center gap-x-1 text-base text-[#6a6f74]">
                     <p>{index + 1}</p>
