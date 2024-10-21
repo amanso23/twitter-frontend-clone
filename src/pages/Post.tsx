@@ -1,5 +1,5 @@
 import PostProfile from "../components/post-profile/PostProfile"
-import RelevantUsersSection from "../components/right-sidebar/relevant-users-section/RelevantUsersSection"
+// import RelevantUsersSection from "../components/right-sidebar/relevant-users-section/RelevantUsersSection"
 
 
 const Post = () => {
