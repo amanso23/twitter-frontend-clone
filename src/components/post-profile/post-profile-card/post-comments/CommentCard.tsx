@@ -14,6 +14,10 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
     const { username } = user.login
     const name = `${user.name.first}${user.name.last}`
 
+    const handleClick = () => {
+        setIsLiked(!isLiked)
+    }
+
     return (
         <div className="grid grid-cols-[60px,1fr] border-b-[0.5px] border-[#2f3336] gap-x-2">
             <div className="flex justify-end">
@@ -47,7 +51,7 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
                             <RetuitSVG className="fill-[#71767b] size-[22px]" />
                             <p className="text-[#71767b]">{getParsedNumber(comment.replies)}</p>
                         </span>
-                        <span className={`${isLiked ? "fill-[#f91880] text-[#f91880]  stroke-[#f91880]" : "stroke-2  stroke-[#71767b] text-[#71767b] "} flex items-center gap-x-1 cursor-pointer transition-colors duration-300 hover:text-[#f91880]  hover:stroke-[#f91880]`}>
+                        <span className={`${isLiked ? "fill-[#f91880] text-[#f91880]  stroke-[#f91880]" : "stroke-2  stroke-[#71767b] text-[#71767b] "} flex items-center gap-x-1 cursor-pointer transition-colors duration-300 hover:text-[#f91880]  hover:stroke-[#f91880]`} onClick={handleClick}>
                             <LikeSVG className="size-[21px]  rounded-full" />
                             <p>{getParsedNumber(comment.likes)}</p>
                         </span>
