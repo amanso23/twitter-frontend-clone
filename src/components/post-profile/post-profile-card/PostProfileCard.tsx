@@ -63,9 +63,9 @@ const PostProfileCard: React.FC<Props> = ({ post }) => {
     }, [isLiked])
 
     return (
-        <div className="p-2 md:p-4">
-            <div className="grid grid-cols-1 gap-4">
-                <div className="flex flex-col">
+        <div>
+            <div className="grid grid-cols-1">
+                <div className="flex flex-col border-b-[0.5px] border-[#2f3336]">
                     <UserCard user={user} />
 
                     <div className="flex flex-col m-2 md:m-4 border-[#2f3336]">
@@ -77,7 +77,7 @@ const PostProfileCard: React.FC<Props> = ({ post }) => {
                         />
                     </div>
 
-                    <div className="flex justify-between items-center gap-4 md:gap-x-12 xl:gap-x-16 border-[#2f3336] border-b-[0.5px]">
+                    <div className="flex justify-between items-center gap-4 md:gap-x-12 xl:gap-x-16 ">
                         <div className="flex items-center justify-between flex-1 ml-2 md:ml-4 mb-2 md:mb-4 mt-2">
                             <span className="flex items-center gap-x-1 text-[#71767b] fill-[#71767b] transition-colors duration-300 hover:text-[#1d9bf0] hover:fill-[#1d9bf0]">
                                 <CommentSVG className="w-5 h-5 md:w-[22px] md:h-[22px]" />

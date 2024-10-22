@@ -7,28 +7,29 @@ import Post from './pages/Post';
 import { useState, useEffect } from 'react';
 
 function App() {
-
   const [selectedItemName, setSelectedItemName] = useState("Inicio");
-  const {pathname} = useLocation()
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (pathname === '/home' || pathname === '/') {
-      setSelectedItemName("Inicio")
+      setSelectedItemName("Inicio");
+    } else if (pathname.match(/^\/ElonMusk(\/status\/[^/]+)?$/)) {
+      setSelectedItemName("Perfil"); // Mantener seleccionado al perfil de Elon Musk
     } else if (pathname.match(/^\/[^/]+(\/status\/[^/]+)?$/)) {
-      setSelectedItemName("Perfil")
+      setSelectedItemName(""); // Para otras rutas de perfil que no son Elon Musk
     }
-  }, [pathname, setSelectedItemName])
+  }, [pathname]);
 
   return (
-      <Layout selectedItemName={selectedItemName} setSelectedItemName={setSelectedItemName}>
-        <Routes>
-          <Route path='/home' element={<Home />} />
-          <Route path='/' element={<Navigate to="/home" replace />}  />
-          <Route path='/:name' element={< Profile />}/>
-          <Route path='/:name/status/:postId' element={< Post />} />
-        </Routes>
-      </Layout>
-  )
+    <Layout selectedItemName={selectedItemName} setSelectedItemName={setSelectedItemName}>
+      <Routes>
+        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Navigate to="/home" replace />} />
+        <Route path='/:name' element={<Profile />} />
+        <Route path='/:name/status/:postId' element={<Post />} />
+      </Routes>
+    </Layout>
+  );
 }
 
 function AppWrapper() {
@@ -36,7 +37,7 @@ function AppWrapper() {
     <Router>
       <App />
     </Router>
-  )
+  );
 }
 
-export default AppWrapper
+export default AppWrapper;

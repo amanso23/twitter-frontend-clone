@@ -70,12 +70,12 @@ const ProfilePostCard: React.FC<Props> = ({ post, user }) => {
 
     return (
         <div className="border-t-[0.5px] border-[#2f3336]">
-            <div className="grid grid-cols-[40px,1fr] md:grid-cols-[60px,1fr] m-4 md:m-6 md:gap-4">
+            <div className="grid grid-cols-[40px,1fr] md:grid-cols-[50px,1fr] p-3 gap-x-1">
                 <div className="flex justify-end">
                     <img
                         src={user.picture.large}
                         alt={`user-${name}`}
-                        className="size-10 mr-2 md:size-12 rounded-full"
+                        className=" size-8 md:size-12 mr-1 rounded-full"
                     />
                 </div>
                 <div className="flex flex-col">
@@ -98,7 +98,7 @@ const ProfilePostCard: React.FC<Props> = ({ post, user }) => {
                         />
                     </a>
 
-                    <div className="flex justify-between items-center gap-4 md:gap-x-12 xl:gap-x-16 border-[#2f3336] border-b-[0.5px]">
+                    <div className="flex justify-between items-center gap-4 md:gap-x-12 xl:gap-x-16">
                         <div className="flex items-center justify-between flex-1 ml-2 md:ml-4 mb-2 md:mb-4 mt-2">
                             <span className="flex items-center gap-x-1 text-[#71767b] fill-[#71767b] transition-colors duration-300 hover:text-[#1d9bf0] hover:fill-[#1d9bf0]">
                                 <CommentSVG className="w-5 h-5 md:w-[22px] md:h-[22px]" />

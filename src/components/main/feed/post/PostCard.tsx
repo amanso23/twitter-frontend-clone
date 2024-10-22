@@ -68,12 +68,12 @@ const PostCard: React.FC<Props> = ({ post }) => {
 
     return (
         <div className="border-t-[0.5px] border-[#2f3336]">
-            <div className="grid grid-cols-[40px,1fr] sm:grid-cols-[60px,1fr]  m-4">
+            <div className="grid grid-cols-[40px,1fr] sm:grid-cols-[60px,1fr] p-3">
                 <a href={`/${name}`} className="flex justify-end mr-2 sm:mr-3">
                     <img
                         src={user.picture.large}
                         alt={`post-${post.id}`}
-                        className="size-9 md:size-12 rounded-full"
+                        className="size-8 md:size-12 rounded-full"
                     />
                 </a>
 

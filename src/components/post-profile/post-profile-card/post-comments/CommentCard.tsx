@@ -19,7 +19,7 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
     }
 
     return (
-        <div className="grid grid-cols-[48px,1fr] md:grid-cols-[60px,1fr] border-b-[0.5px] border-[#2f3336] gap-x-2 p-2 md:p-4">
+        <div className="grid grid-cols-[48px,1fr] md:grid-cols-[60px,1fr] border-b-[0.5px] border-[#2f3336] gap-x-2 ">
             <div className="flex justify-end">
                 <img
                     src={user.picture.large}
@@ -44,7 +44,7 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
                 </div>
                 <p className="text-left text-sm md:text-base">{comment.text}</p>
 
-                <div className="flex justify-between items-center gap-x-4 md:gap-x-12 xl:gap-x-16 border-[#2f3336] border-b-[0.5px] mt-2 md:mt-4">
+                <div className="flex justify-between items-center gap-x-4 md:gap-x-12 xl:gap-x-16 mt-2">
                     <div className="flex items-center justify-between flex-1">
                         <span className="flex items-center gap-x-1 text-xs md:text-sm">
                             <RetuitSVG className="fill-[#71767b] w-5 h-5 md:w-[22px] md:h-[22px]" />
@@ -62,7 +62,7 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
                             <p className="text-[#71767b]">{getParsedNumber(comment.impressions)}</p>
                         </span>
                     </div>
-                    <div className="flex items-center justify-between gap-x-2 md:gap-x-3">
+                    <div className="flex items-center justify-between gap-x-2 md:gap-x-3 mr-4">
                         <BookMarkSVG className="w-5 h-5 md:w-[22px] md:h-[22px] fill-[#71767b]" />
                         <ShareSVG className="w-5 h-5 md:w-[22px] md:h-[22px] fill-[#71767b]" />
                     </div>
