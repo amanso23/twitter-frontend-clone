@@ -29,7 +29,8 @@ export const parseFeedPostToUserWithPost = (feedPost: FeedPost): UserWithPost =>
         likes: feedPost.likes,
         replies: feedPost.replies,
         impressions: feedPost.impressions,
-        isLiked: feedPost.isLiked
+        isLiked: feedPost.isLiked,
+        isRetweeted: feedPost.isRetweeted
     }
 
     return {
