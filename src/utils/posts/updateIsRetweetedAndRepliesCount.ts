@@ -1,9 +1,7 @@
 import { UserWithPost } from "../user/user.types"
 import { FeedPost } from "./post.types"
 
-export const updateIsLikedAndLikeCount = (sectionName: string, postId: string, postLikes: number, postIsLiked: boolean) => {
-
-    console.log(sectionName)
+export const updateIsRetweetedAndRepliesCount = (sectionName: string, postId: string, postReplies: number, postIsRetweeted: boolean) => {
     
     const posts = localStorage.getItem(sectionName)
 
@@ -12,7 +10,7 @@ export const updateIsLikedAndLikeCount = (sectionName: string, postId: string, p
 
         const updatedPosts = parsePosts.map(post => {
             if(post.id === postId){
-                return {...post, isLiked: postIsLiked, likes: postLikes}
+                return {...post, isRetweeted: postIsRetweeted, replies: postReplies}
             }
             return post
         })
@@ -26,14 +24,13 @@ export const updateIsLikedAndLikeCount = (sectionName: string, postId: string, p
         const updatedPosts = parsePosts.map(user => {
             const updatedUserPosts = user.posts.map(post => {
                 if(post.id === postId){ 
-                    return {...post, isLiked: postIsLiked, likes: postLikes}
+                    return {...post, isRetweeted: postIsRetweeted, replies: postReplies}
                 }
                 return post
             })
             return {...user, posts: updatedUserPosts}
         })
 
-        
         localStorage.setItem(sectionName, JSON.stringify(updatedPosts))
 
     }

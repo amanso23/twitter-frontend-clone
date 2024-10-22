@@ -5,6 +5,7 @@ import { updateUsersSection } from "../../../utils/user/updateUsersSection";
 import { MailSVG, VerifiedSVG } from "../../icons";
 import Bibliography from "../bibliography/Biblioagraphy";
 import SocialSection from "../social/SocialSection";
+import { loggedUser } from "../../sidebar/user-logged/data";
 
 interface Props {
   user?: User;
@@ -83,10 +84,13 @@ const UserProfileCard: React.FC<Props> = ({ user, userName }) => {
 
         {user && (
           <span className="absolute top-4 right-4 flex items-center gap-x-3">
-            <span className="border-[0.5px] border-slate-500 p-2 rounded-full cursor-pointer hover:bg-[#181919] transition-colors duration-200">
-              <MailSVG className="size-6 fill-white" />
-            </span>
-            <Button
+            {user.login.username !== loggedUser.login.username && 
+              <span className="border-[0.5px] border-slate-500 p-2 rounded-full cursor-pointer hover:bg-[#181919] transition-colors duration-200">
+                <MailSVG className="size-6 fill-white" /> 
+              </span>
+            }
+            {user.login.username === loggedUser.login.username ? <Button className="border-[1px]  px-4 py-[5px] font-medium rounded-full flex items-center justify-center hover:bg-[#181919] transition-colors duration-300 " content="Editar perfil" /> : (
+              <Button
               content={
                 isFollowed ? (isHovered ? "Dejar de seguir" : "Siguiendo") : "Seguir"
               }
@@ -99,6 +103,7 @@ const UserProfileCard: React.FC<Props> = ({ user, userName }) => {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             />
+            )}
           </span>
         )}
       </div>

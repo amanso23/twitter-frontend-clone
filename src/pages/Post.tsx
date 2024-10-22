@@ -1,5 +1,5 @@
 import PostProfile from "../components/post-profile/PostProfile"
-// import RelevantUsersSection from "../components/right-sidebar/relevant-users-section/RelevantUsersSection"
+import TrendingSection from "../components/right-sidebar/trending-section/TrendingSection"
 
 
 const Post = () => {
@@ -7,7 +7,8 @@ const Post = () => {
     return(
         <>
            <PostProfile />
-           {/* <RelevantUsersSection /> */}
+           <TrendingSection />
+         
         </>
     )
 }

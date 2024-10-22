@@ -1,14 +1,17 @@
+import { loggedUser } from "../../components/sidebar/user-logged/data"
 import { getRandomsUsers } from "./getRandomsUsers"
-import { User } from "./user.types"
+import { User, UserWithPost } from "./user.types"
+
 
 export const loadUsersSection = (setUsersSection: (setUsersSection: User[]) => void, sectionName: string) => {
 
     const fetchAndStoreUsers = async (count: number) => {
         try {
             const users = await getRandomsUsers(count) 
-            if (users) { 
+            if (users) {
+                const filteredUsers = users.filter(user => user.login.username !== loggedUser.login.username)
                 localStorage.setItem(sectionName, JSON.stringify(users))
-                return users
+                return filteredUsers
             }
         } catch (error) {
             console.error(error)
@@ -21,6 +24,8 @@ export const loadUsersSection = (setUsersSection: (setUsersSection: User[]) => v
         if (!usersSection) {
             fetchAndStoreUsers(3).then(users => setUsersSection(users))
         } else {
-            setUsersSection(JSON.parse(usersSection))
+            const parseUserSection: UserWithPost[] = JSON.parse(usersSection)
+            const filteredSection = parseUserSection.filter(user => user.login.username !== loggedUser.login.username)
+            setUsersSection(filteredSection)
         }
     }}

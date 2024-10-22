@@ -10,7 +10,7 @@ export const laretalNavItems: NavItemType[] = [
     {
         name: "Perfil",
         icon: ProfileSVG,
-        path: "/profile"
+        path: "/ElonMusk"
     }, 
 ]
 

@@ -1,12 +1,15 @@
 import { laretalNavItems } from "./data"
 import { PlumaSVG, XSVG } from "../../icons"
 import Button from "../../comun/Button"
-import { useState } from "react"
 import NavItem from "./NavItem"
 
-const LateralNav = () => {
+interface Props {
+    setSelectedItemName: (payload: string) => void
+    selectedItemName: string
+}
 
-    const [selectedItemName, setSelectedItemName] = useState("Inicio")
+const LateralNav: React.FC<Props> = ({setSelectedItemName, selectedItemName}) => {
+
 
     return (
         <nav className="flex flex-col items-center xl:items-start">

@@ -1,6 +1,6 @@
-import { User } from "../../../utils/user/user.types";
+import { UserWithPost } from "../../../utils/user/user.types"
 
-export const loggedUser: User = {
+export const loggedUser: UserWithPost = {
     gender: "male",
     name: {
         title: "Mr.",
@@ -64,4 +64,5 @@ export const loggedUser: User = {
         following: 10000000,
         followers: 150000000
     },
-};
+    posts: []
+}

@@ -22,6 +22,7 @@ export const getRandomPost = async(): Promise<FeedPost> => {
         likes: getRandomNumber(MAX_LIKES),
         replies: getRandomNumber(MAX_REPLIES),
         impressions: getRandomNumber(MAX_IMPRESSIONS),
-        isLiked: false
+        isLiked: false,
+        isRetweeted: false
     }
 }

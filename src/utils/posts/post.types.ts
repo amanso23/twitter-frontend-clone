@@ -10,6 +10,7 @@ export interface Post {
     replies: number
     impressions: number
     isLiked: boolean
+    isRetweeted: boolean
 }
 
 export interface FeedPost extends Post{
