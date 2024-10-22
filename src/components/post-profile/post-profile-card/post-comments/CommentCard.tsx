@@ -6,8 +6,8 @@ import { BookMarkSVG, ImpressionsSVG, LikeSVG, RetuitSVG, ShareSVG, VerifiedSVG 
 interface Props {
     comment: Comment
 }
-const CommentCard: React.FC<Props> = ({ comment }) => {
 
+const CommentCard: React.FC<Props> = ({ comment }) => {
     const [isLiked, setIsLiked] = useState(false)
 
     const { user } = comment
@@ -19,58 +19,56 @@ const CommentCard: React.FC<Props> = ({ comment }) => {
     }
 
     return (
-        <div className="grid grid-cols-[60px,1fr] border-b-[0.5px] border-[#2f3336] gap-x-2">
+        <div className="grid grid-cols-[48px,1fr] md:grid-cols-[60px,1fr] border-b-[0.5px] border-[#2f3336] gap-x-2 p-2 md:p-4">
             <div className="flex justify-end">
                 <img
                     src={user.picture.large}
                     alt={name}
-                    className="size-12 rounded-full"
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-full"
                 />
             </div>
 
             <div className="flex flex-col">
                 <div className="flex gap-x-1">
-                    <p className="font-bold hover:underline truncate">
+                    <p className="font-bold hover:underline truncate text-sm md:text-base">
                         {name}
                     </p>
                     {user.isVerified ? (
                         <VerifiedSVG
-                            className={`${user.isAfiliated ? 'fill-[#e2b719]' : 'fill-[#1d9bf0]'
-                                } size-5 mt-[2px]`}
+                            className={`${user.isAfiliated ? 'fill-[#e2b719]' : 'fill-[#1d9bf0]'} w-4 h-4 md:w-5 md:h-5 mt-[2px]`}
                         />
                     ) : (
                         ''
                     )}
-                    <p className="text-[#71767b]">@{username}</p>
+                    <p className="text-[#71767b] text-xs md:text-sm">@{username}</p>
                 </div>
-                <p className="text-left">{comment.text}</p>
+                <p className="text-left text-sm md:text-base">{comment.text}</p>
 
-                <div className="flex justify-between items-center gap-x-12 xl:gap-x-16 border-[#2f3336]  border-b-[0.5px]">
-                    <div className="flex items-center justify-between flex-1 ml-4 mb-4 mt-2">
-                        <span className="flex items-center gap-x-1">
-                            <RetuitSVG className="fill-[#71767b] size-[22px]" />
+                <div className="flex justify-between items-center gap-x-4 md:gap-x-12 xl:gap-x-16 border-[#2f3336] border-b-[0.5px] mt-2 md:mt-4">
+                    <div className="flex items-center justify-between flex-1">
+                        <span className="flex items-center gap-x-1 text-xs md:text-sm">
+                            <RetuitSVG className="fill-[#71767b] w-5 h-5 md:w-[22px] md:h-[22px]" />
                             <p className="text-[#71767b]">{getParsedNumber(comment.replies)}</p>
                         </span>
-                        <span className={`${isLiked ? "fill-[#f91880] text-[#f91880]  stroke-[#f91880]" : "stroke-2  stroke-[#71767b] text-[#71767b] "} flex items-center gap-x-1 cursor-pointer transition-colors duration-300 hover:text-[#f91880]  hover:stroke-[#f91880]`} onClick={handleClick}>
-                            <LikeSVG className="size-[21px]  rounded-full" />
+                        <span
+                            className={`${isLiked ? "fill-[#f91880] text-[#f91880] stroke-[#f91880]" : "stroke-2 stroke-[#71767b] text-[#71767b]"} flex items-center gap-x-1 cursor-pointer transition-colors duration-300 hover:text-[#f91880] hover:stroke-[#f91880]`}
+                            onClick={handleClick}
+                        >
+                            <LikeSVG className="w-5 h-5 md:w-[21px] md:h-[21px] rounded-full" />
                             <p>{getParsedNumber(comment.likes)}</p>
                         </span>
-                        <span className="flex items-center gap-x-1">
-                            <ImpressionsSVG className="fill-[#71767b] size-[22px]" />
+                        <span className="flex items-center gap-x-1 text-xs md:text-sm">
+                            <ImpressionsSVG className="fill-[#71767b] w-5 h-5 md:w-[22px] md:h-[22px]" />
                             <p className="text-[#71767b]">{getParsedNumber(comment.impressions)}</p>
                         </span>
                     </div>
-                    <div className="flex items-center justify-between gap-x-3 mr-4">
-                        <BookMarkSVG className="size-[22px] fill-[#71767b]" />
-                        <ShareSVG className="size-[22px] fill-[#71767b]" />
+                    <div className="flex items-center justify-between gap-x-2 md:gap-x-3">
+                        <BookMarkSVG className="w-5 h-5 md:w-[22px] md:h-[22px] fill-[#71767b]" />
+                        <ShareSVG className="w-5 h-5 md:w-[22px] md:h-[22px] fill-[#71767b]" />
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
     )
 }
 

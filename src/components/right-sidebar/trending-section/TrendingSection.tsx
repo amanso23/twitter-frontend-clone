@@ -4,7 +4,7 @@ import TrendingCard from "./TrendingCard"
 
 const TrendingSection = () => {
     return (
-            <div className="flex flex-col border-[0.5px] border-[#2f3336] m-6 rounded-2xl h-min gap-y-4 sticky top-6"  >
+            <div className="flex-col border-[0.5px] border-[#2f3336] m-6 rounded-2xl h-min gap-y-4 sticky top-6 hidden md:block"  >
                 <h1 className="font-bold text-3xl text-left m-4">
                     Tendencias de España
                 </h1>

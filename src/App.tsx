@@ -13,9 +13,9 @@ function App() {
 
   useEffect(() => {
     if (pathname === '/home' || pathname === '/') {
-      setSelectedItemName("Inicio");
+      setSelectedItemName("Inicio")
     } else if (pathname.match(/^\/[^/]+(\/status\/[^/]+)?$/)) {
-      setSelectedItemName("");
+      setSelectedItemName("Perfil")
     }
   }, [pathname, setSelectedItemName])
 

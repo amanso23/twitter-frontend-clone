@@ -68,71 +68,73 @@ const PostCard: React.FC<Props> = ({ post }) => {
 
     return (
         <div className="border-t-[0.5px] border-[#2f3336]">
-            <div className="grid grid-cols-[60px,1fr] m-4">
-                <a href={`/${name}`} className="flex justify-end mr-3">
+            <div className="grid grid-cols-[40px,1fr] sm:grid-cols-[60px,1fr]  m-4">
+                <a href={`/${name}`} className="flex justify-end mr-2 sm:mr-3">
                     <img
                         src={user.picture.large}
                         alt={`post-${post.id}`}
-                        className="size-12 rounded-full"
+                        className="size-9 md:size-12 rounded-full"
                     />
                 </a>
 
                 <div className="flex flex-col">
                     <a href={`/${name}`} className="flex items-center gap-x-1">
-                        <p className="font-bold hover:underline truncate">
+                        <p className="font-bold hover:underline truncate text-sm sm:text-base">
                             {name}
                         </p>
                         {post.user?.isVerified ? (
                             <VerifiedSVG
-                                className={`${user.isAfiliated ? 'fill-[#e2b719]' : 'fill-[#1d9bf0]'
-                                    } size-5 mt-[2px]`}
+                                className={`${user.isAfiliated ? 'fill-[#e2b719]' : 'fill-[#1d9bf0]'} w-4 h-4 sm:w-5 sm:h-5 mt-[2px]`}
                             />
                         ) : (
                             ''
                         )}
-                        <p className="text-[#71767b]">@{username}</p>
+                        <p className="text-[#71767b] text-xs sm:text-sm">@{username}</p>
                     </a>
 
                     <Link to={`/${name}/status/${post.id}`} >
                         <div className="flex flex-col">
-                            <p className="mb-4 text-left" >{post.text}</p>
-                            <img
-                                src={post.image}
-                                alt={`post ${post.id}`}
-                                className="rounded-2xl border-[0.5px] border-[#2f3336] aspect-square "
-                            />
+                            <p className="mb-2 text-xs sm:mb-4 sm:text-base text-left">
+                                {post.text}
+                            </p>
+                            {post.image && (
+                                <img
+                                    src={post.image}
+                                    alt={`post ${post.id}`}
+                                    className="rounded-2xl border-[0.5px] border-[#2f3336] aspect-square object-cover"
+                                />
+                            )}
                         </div>
                     </Link>
 
-                        <div className="flex justify-between items-center mt-4 gap-x-12 xl:gap-x-16">
-                            <div className="flex items-center justify-between  flex-1">
-                                <a href={`/${name}/status/${post.id}`} className="flex items-center gap-x-1 text-[#71767b] fill-[#71767b] transition-colors duration-300 hover:text-[#1d9bf0] hover:fill-[#1d9bf0] cursor-pointer">
-                                    <CommentSVG className="size-[22px]" />
-                                    <p>{getParsedNumber(post.comments.length)}</p>
-                                </a>
-                                <span className={`${isRetweeted ? "text-[#019966] fill-[#019966]" : " text-[#71767b] fill-[#71767b] hover:text-[#019966] hover:fill-[#019966]"} transition-colors duration-300  flex items-center gap-x-1 cursor-pointer`} onClick={handleClickRetweeted} >
-                                    <RetuitSVG className="size-[22px]"/>
-                                    <p>{getParsedNumber(post.replies)}</p>
-                                </span>
-                                <span className={`${isLiked ? "fill-[#f91880] text-[#f91880]  stroke-[#f91880]" : "stroke-2  stroke-[#71767b] text-[#71767b] "} flex items-center gap-x-1 cursor-pointer transition-colors duration-300 hover:text-[#f91880]  hover:stroke-[#f91880]`} onClick={handleClick}>
-                                    <LikeSVG className="size-[21px]  rounded-full" />
-                                    <p>{getParsedNumber(post.likes)}</p>
-                                </span>
-                                <span className="flex items-center gap-x-1 text-[#71767b] fill-[#71767b] transition-colors duration-300 hover:text-[#1d9bf0] hover:fill-[#1d9bf0] cursor-pointer">
-                                    <ImpressionsSVG className="size-[22px]" />
-                                    <p>{getParsedNumber(post.impressions)}</p>
-                                </span>
-                            </div>
-                            <div className="flex items-center justify-between gap-x-3">
-                                <BookMarkSVG className="size-[22px] fill-[#71767b]" />
-                                <ShareSVG className="size-[22px] fill-[#71767b]" />
-                            </div>
+                    <div className="flex justify-between items-center mt-3 gap-x-6 sm:gap-x-12 xl:gap-x-16">
+                        <div className="flex items-center justify-between flex-1 gap-2">
+                            <a href={`/${name}/status/${post.id}`} className="flex items-center gap-x-1 text-[#71767b] fill-[#71767b] transition-colors duration-300 hover:text-[#1d9bf0] hover:fill-[#1d9bf0] cursor-pointer">
+                                <CommentSVG className="w-5 h-5" />
+                                <p className="text-xs sm:text-sm">{getParsedNumber(post.comments.length)}</p>
+                            </a>
+                            <span className={`${isRetweeted ? "text-[#019966] fill-[#019966]" : " text-[#71767b] fill-[#71767b] hover:text-[#019966] hover:fill-[#019966]"} transition-colors duration-300 flex items-center gap-x-1 cursor-pointer`} onClick={handleClickRetweeted}>
+                                <RetuitSVG className="w-5 h-5"/>
+                                <p className="text-xs sm:text-sm">{getParsedNumber(post.replies)}</p>
+                            </span>
+                            <span className={`${isLiked ? "fill-[#f91880] text-[#f91880] stroke-[#f91880]" : "stroke-2 stroke-[#71767b] text-[#71767b]"} flex items-center gap-x-1 cursor-pointer transition-colors duration-300 hover:text-[#f91880] hover:stroke-[#f91880]`} onClick={handleClick}>
+                                <LikeSVG className="w-5 h-5 rounded-full" />
+                                <p className="text-xs sm:text-sm">{getParsedNumber(post.likes)}</p>
+                            </span>
+                            <span className="flex items-center gap-x-1 text-[#71767b] fill-[#71767b] transition-colors duration-300 hover:text-[#1d9bf0] hover:fill-[#1d9bf0] cursor-pointer">
+                                <ImpressionsSVG className="w-5 h-5" />
+                                <p className="text-xs sm:text-sm">{getParsedNumber(post.impressions)}</p>
+                            </span>
                         </div>
-                  
+                        <div className="flex items-center justify-between gap-x-2 sm:gap-x-3">
+                            <BookMarkSVG className="w-5 h-5 fill-[#71767b]" />
+                            <ShareSVG className="w-5 h-5 fill-[#71767b]" />
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-
     )
 }
 
